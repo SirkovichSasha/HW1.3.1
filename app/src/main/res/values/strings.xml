@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Комплексная система мониторинга здоровья Сиркович Александра</string>
+    <string name="first_name">Имя</string>
+    <string name="last_name">Фамилия</string>
+    <string name="father_name">Отчество</string>
+    <string name="save">Сохранить</string>
+    <string name="life_data">Жизненные показатели</string>
+    <string name="pressure_data">Показатели давления</string>
+    <string name="age">Возраст</string>
+    <string name="high_pressure">Верхнее давление</string>
+    <string name="low_pressure">Нижнее давление</string>
+    <string name="puls">Пульс</string>
+    <string name="tachicardia">Тахикардия</string>
+    <string name="date">Дата замера</string>
+    <string name="weight">Вес</string>
+    <string name="steps">Количество шагов</string>
+    <string name="check_message">Введите значение %1$s</string>
+    <string name="incorrect_integer">Введите целое значиние в поле %1$s</string>
+    <string name="incorrect_float">Введите дробное значиние в поле %1$s</string>
+</resources>
