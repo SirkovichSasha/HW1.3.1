@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG=MainActivity.class.getSimpleName();
+    private static final String TAG = MainActivity.class.getSimpleName();
     private Button lifeDataButton;
     private Button pressureButton;
     private Button saveButton;
@@ -23,23 +23,24 @@ public class MainActivity extends AppCompatActivity {
     private EditText fatherName;
     private EditText ageEdit;
     private ArrayList<Contact> contacts;
-    private static Contact c;
+    private Contact c;
 
-    public static Contact getC() {
-        return c;
-    }
+    //public static Contact getC() {
+      //  return c;
+    //}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        c = new Contact();
         init();
         lifeDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String buttonName=lifeDataButton.getText().toString();
-                Log.i(TAG,"Button pressed : "+buttonName);
-                Intent intent=new Intent(MainActivity.this, LifeActivity.class);
+                String buttonName = lifeDataButton.getText().toString();
+                Log.i(TAG, "Button pressed : " + buttonName);
+                Intent intent = new Intent(MainActivity.this, LifeActivity.class);
                 startActivity(intent);
             }
         });
@@ -47,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
         pressureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String buttonName=pressureButton.getText().toString();
-                Log.i(TAG,"Button pressed : "+buttonName);
-                Intent intent=new Intent(MainActivity.this, PressureActivity.class);
+                String buttonName = pressureButton.getText().toString();
+                Log.i(TAG, "Button pressed : " + buttonName);
+                Intent intent = new Intent(MainActivity.this, PressureActivity.class);
                 startActivity(intent);
             }
         });
@@ -57,38 +58,40 @@ public class MainActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String buttonName=saveButton.getText().toString();
-                Log.i(TAG,"Button pressed : "+buttonName);
-                String name=firstName.getText().toString();
-                String lname=lastName.getText().toString();
-                String fname=fatherName.getText().toString();
-                String ageStr=ageEdit.getText().toString();
+                String buttonName = saveButton.getText().toString();
+                Log.i(TAG, "Button pressed : " + buttonName);
+                String name = firstName.getText().toString();
+                String lname = lastName.getText().toString();
+                String fname = fatherName.getText().toString();
+                String ageStr = ageEdit.getText().toString();
+                Integer age=0;
 
-                if (name.length()== 0)
-                {
-                    String errorStr=getString(R.string.check_message,firstName.getHint().toString());
-                    Toast.makeText(MainActivity.this,errorStr, Toast.LENGTH_SHORT).show();
+                if (name.length() == 0) {
+                    String errorStr = getString(R.string.check_message, firstName.getHint().toString());
+                    Toast.makeText(MainActivity.this, errorStr, Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(lname.length()==0)
-                {
-                    String errorStr=getString(R.string.check_message,lastName.getHint().toString());
+                if (lname.length() == 0) {
+                    String errorStr = getString(R.string.check_message, lastName.getHint().toString());
                     Toast.makeText(MainActivity.this, errorStr, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                //try {
-                    int age=Integer.parseInt(ageStr);
-                    c=new Contact(name,lname,fname,age);
-                    contacts.add(c);
-               // }catch(NumberFormatException e)
-               // {
-               // String errorStr=getString(R.string.incorrect_integer,ageEdit.getHint().toString());
-              //      Toast.makeText(MainActivity.this,errorStr, Toast.LENGTH_SHORT).show();
-              //  }
-               // finally {
-             //       ageEdit.getText().clear();
-              //  }
+                try {
+                    age = Integer.parseInt(ageStr);
+
+                } catch (NumberFormatException e) {
+                    String errorStr = getString(R.string.incorrect_integer, ageEdit.getHint().toString());
+                    Toast.makeText(MainActivity.this, errorStr, Toast.LENGTH_SHORT).show();
+                } finally {
+                    ageEdit.getText().clear();
+                }
+                c.setName(name);
+                c.setSurname(lname);
+                c.setFathername(fname);
+                c.setAge(age);
+
+                contacts.add(c);
 
 
             }
@@ -96,13 +99,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
-        lifeDataButton=findViewById(R.id.lifeDataButton);
-        pressureButton=findViewById(R.id.pressureButton);
-        saveButton=findViewById(R.id.saveButton);
-        firstName=findViewById(R.id.editFirstName);
-        lastName=findViewById(R.id.editLastName);
-        fatherName=findViewById(R.id.editFatherName);
-        ageEdit=findViewById(R.id.editAge);
-        contacts=new ArrayList<>();
+        lifeDataButton = findViewById(R.id.lifeDataButton);
+        pressureButton = findViewById(R.id.pressureButton);
+        saveButton = findViewById(R.id.saveButton);
+        firstName = findViewById(R.id.editFirstName);
+        lastName = findViewById(R.id.editLastName);
+        fatherName = findViewById(R.id.editFatherName);
+        ageEdit = findViewById(R.id.editAge);
+        contacts = new ArrayList<>();
     }
 }

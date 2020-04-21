@@ -9,12 +9,15 @@ public class Contact implements Comparable<Contact> {
     private String fullName;
     private int age;
 
-    public Contact(String name, String surname,String fathername,int age) {
+    public Contact() {
+    }
+
+    public Contact(String name, String surname, String fathername, int age) {
         this.name = name;
         this.surname = surname;
         this.fathername = fathername;
-        this.age=age;
-        fullName=name+surname+fathername+age;
+        this.age = age;
+        fullName = name + surname + fathername + age;
     }
 
     @Override
